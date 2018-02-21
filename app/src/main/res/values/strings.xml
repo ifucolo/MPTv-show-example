@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MPTv Show</string>
+
+    <string name="base_url">MPTv Show</string>
+    <string name="api_token">MPTv Show</string>
+
 </resources>
