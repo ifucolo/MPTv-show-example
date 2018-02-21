@@ -1,6 +1,6 @@
 package com.example.com.mptvshow.feature.detail.domain
 
-import com.example.com.mptvshow.feature.list.infrastructure.mapper.model.TvShowItem
+import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
 import io.reactivex.Single
 
 interface DetailTvShowSource {

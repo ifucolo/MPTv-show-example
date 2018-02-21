@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.internal.ForegroundLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="?selectableItemBackground">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_height"
+            android:src="@drawable/img_place_holder"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_bar"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_view"
+            android:paddingRight="@dimen/margin_view"
+            android:background="@drawable/gradient_bottom">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/title_size" />
+
+            <TextView
+                android:id="@+id/txtSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/subtitle_size" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</android.support.design.internal.ForegroundLinearLayout>

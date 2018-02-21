@@ -99,7 +99,7 @@ abstract class EndlessRecyclerViewScrollListener constructor(val layoutManager: 
         this.loading = true
     }
 
-    fun Bundle.getState() {
+    fun getState()= Bundle().apply {
         putInt("currentPage", currentPage)
         putInt("previousTotalItemCount", previousTotalItemCount)
         putBoolean("loading", loading)

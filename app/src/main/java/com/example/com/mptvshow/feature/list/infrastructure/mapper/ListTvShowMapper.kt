@@ -1,6 +1,6 @@
 package com.example.com.mptvshow.feature.list.infrastructure.mapper
 
-import com.example.com.mptvshow.feature.list.infrastructure.mapper.model.TvShowItem
+import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
 import com.example.com.mptvshow.feature.list.infrastructure.model.ListTvShowPayload
 
 object ListTvShowMapper {

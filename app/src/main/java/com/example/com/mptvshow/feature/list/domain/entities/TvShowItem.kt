@@ -1,8 +1,8 @@
-package com.example.com.mptvshow.feature.list.infrastructure.mapper.model
+package com.example.com.mptvshow.feature.list.domain.entities
 
-import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class TvShowItem {
+class TvShowItem: Serializable {
 
     var id: String = ""
     var title: String = ""

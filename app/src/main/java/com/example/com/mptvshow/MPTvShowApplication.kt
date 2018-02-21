@@ -5,7 +5,6 @@ import com.example.com.mptvshow.di.AppModule
 import com.example.com.mptvshow.di.ApplicationComponent
 import com.example.com.mptvshow.di.DaggerApplicationComponent
 import com.facebook.stetho.Stetho
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
 class MPTvShowApplication: Application() {
 

@@ -28,18 +28,6 @@ class NetModule{
 
     @Provides
     @Singleton
-    fun providesInterceptorAuth(context: Context) = Interceptor {
-        val request = it.request()
-        val builder = request.newBuilder()
-        val token = context.getString(R.string.api_token)
-
-        builder.header("Authorization", token)
-
-        it.proceed(builder.build())
-    }
-
-    @Provides
-    @Singleton
     fun providesOkkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
 
@@ -66,7 +54,7 @@ class NetModule{
 
     @Provides
     @Singleton
-    fun provideServerApi(retrofit: Retrofit): ServerApi {
+    fun provideServerApi(retrofit: Retrofit): ServerApi{
         return retrofit.create(ServerApi::class.java)
     }
 }

@@ -36,8 +36,6 @@
           <option name="apiVersion" value="1.2" />
           <option name="pluginOptions">
             <array>
-              <option value="plugin:org.jetbrains.kotlin.kapt:output=/Users/nododigital/Desktop/workspace/open-source/MPTv-show-example/app/build/tmp/kapt/debug/wrappers/annotations.debug.txt" />
-              <option value="plugin:org.jetbrains.kotlin.kapt:inherited=true" />
               <option value="plugin:org.jetbrains.kotlin.android:experimental=false" />
               <option value="plugin:org.jetbrains.kotlin.android:enabled=true" />
               <option value="plugin:org.jetbrains.kotlin.android:defaultCacheImplementation=hashMap" />
@@ -46,6 +44,7 @@
           <option name="pluginClasspaths">
             <array>
               <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.2.21/b35afe5863f02e395afd1bf61fcbd647034196a0/kotlin-android-extensions-1.2.21.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.2.21/a8217f1d15190b377518c6231200f325342a0ab1/kotlin-annotation-processing-gradle-1.2.21.jar" />
             </array>
           </option>
         </compilerArguments>
@@ -173,6 +172,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.stetho:stetho-okhttp3-1.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.hannesdorfmann:adapterdelegates3-3.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.0.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-core-3.0.1" level="project" />

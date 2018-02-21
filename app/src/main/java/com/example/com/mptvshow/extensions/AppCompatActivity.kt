@@ -1,7 +1,10 @@
 package com.example.com.mptvshow.extensions
+import android.os.Build
 import android.support.annotation.IdRes
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 import com.example.com.mptvshow.R
 
 fun AppCompatActivity.addFragment(fragment: Fragment){
@@ -18,6 +21,17 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, tag: String) {
         replace(R.id.container, fragment)
     }
 }
+
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+fun AppCompatActivity.replaceFragmentTransition(fragment: Fragment, imageView: ImageView, tag: String) {
+    supportFragmentManager.inTransactionImage({
+        if (findFragmentByTag(tag) != fragment)
+            addToBackStack(tag)
+
+        replace(R.id.container, fragment)
+    }, imageView)
+}
+
 
 fun AppCompatActivity.popFragment(): Boolean {
      val fragmentManager = fragmentManager

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="bottom_bar">68dp</dimen>
+    <dimen name="image_height">204dp</dimen>
+    <dimen name="margin_view">16dp</dimen>
+
+    <dimen name="title_size">16sp</dimen>
+    <dimen name="subtitle_size">12sp</dimen>
+
+
+</resources>

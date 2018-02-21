@@ -2,9 +2,8 @@ package com.example.com.mptvshow.feature.detail.infrastructure
 
 import com.example.com.mptvshow.di.ServerApi
 import com.example.com.mptvshow.feature.detail.domain.DetailTvShowSource
-import com.example.com.mptvshow.feature.list.domain.ListTvShowSource
 import com.example.com.mptvshow.feature.list.infrastructure.mapper.ListTvShowMapper
-import com.example.com.mptvshow.feature.list.infrastructure.mapper.model.TvShowItem
+import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
 import io.reactivex.Single
 import javax.inject.Inject
 
