@@ -3,6 +3,7 @@ package com.example.com.mptvshow.feature
 import android.content.Context
 import android.os.Build
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.widget.ImageView
 import com.example.com.mptvshow.feature.detail.ui.TvShowDetailFragment
 import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
@@ -74,7 +75,7 @@ open class BaseFragment: Fragment(), ListTvShowAdapter.ListGenericListener {
 
     override fun onCLickTvShow(tvShowItem: TvShowItem, imgCover: ImageView) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            mainListener?.openFragmentTransaction(TvShowDetailFragment.newInstance(tvShowItem, imgCover.transitionName), "", imgCover)
+            mainListener?.openFragmentTransaction(TvShowDetailFragment.newInstance(tvShowItem, ViewCompat.getTransitionName(imgCover)), "", imgCover)
         else
             mainListener?.openFragment(TvShowDetailFragment.newInstance(tvShowItem), "")
 

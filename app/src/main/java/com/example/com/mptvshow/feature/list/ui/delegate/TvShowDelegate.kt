@@ -49,6 +49,9 @@ class TvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.List
         viewHolder.txtTitle.text = item.title
         viewHolder.subTitle.text = item.voteAverage.toString()
 
+
+
+        viewHolder.imgCover.transitionName = "iago"
         viewHolder.itemView.setOnClickListener {
             listGenericListener.onCLickTvShow(item, viewHolder.imgCover)
         }

@@ -23,7 +23,7 @@ class TvShowDetailFragment: BaseFragment() {
     lateinit var imgHero: ImageView
 
     var tvShowItem: TvShowItem? = null
-
+    var url = ""
     companion object {
 
         var EXTRA_TRANSACTION_NAME = "transaction_name"
@@ -52,6 +52,15 @@ class TvShowDetailFragment: BaseFragment() {
     }
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        url = context?.getString(R.string.base_url_images, tvShowItem?.posterImage)?: ""
+
+        postponeEnterTransition()
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move);
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_tv_show_detail, container, false)
 
@@ -59,19 +68,9 @@ class TvShowDetailFragment: BaseFragment() {
 
         tvShowItem = arguments?.getSerializable(EXTRA_TV_SHOW) as TvShowItem
 
-        setUpTransition()
-
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            imgHero.transitionName = arguments?.getString(EXTRA_TRANSACTION_NAME)
 
         Glide.with(this)
-                .load(context?.getString(R.string.base_url_images, tvShowItem?.posterImage))
+                .load(url)
                 .centerCrop()
                 .dontAnimate()
                 .listener(object : RequestListener<String, GlideDrawable> {
@@ -86,11 +85,19 @@ class TvShowDetailFragment: BaseFragment() {
                     }
                 })
                 .into(imgHero)
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     private fun setUpTransition() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
         }
     }
 }

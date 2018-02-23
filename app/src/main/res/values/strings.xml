@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MPTv Show</string>
 
-    <string name="base_url">https://api.themoviedb.org/3</string>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
     <string name="api_token">aedd1034b62c7075e18d333d4579493e</string>
     <string name="base_url_images">http://image.tmdb.org/t/p/w185%1$s</string>
 </resources>

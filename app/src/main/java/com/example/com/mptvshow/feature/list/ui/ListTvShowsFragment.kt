@@ -40,8 +40,17 @@ class ListTvShowsFragment: BaseFragment(), ListShowTvView {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        items.clear()
+        listTvShowAdapter = ListTvShowAdapter(items, this)
+
+        insertLoader()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_tv_show_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_tv_show_detail, container, false)
 
         MPTvShowApplication().get().getCoreComponent().inject(this)
         presenter.bind(this)
@@ -57,19 +66,19 @@ class ListTvShowsFragment: BaseFragment(), ListShowTvView {
         super.onDestroy()
     }
 
-    private fun setupRecycler() = with(recyclerView) {
-        val oldState = endlessRecyclerViewScrollListener?.getState()
+    protected fun setupRecycler() = with(recyclerView) {
+        val oldState = endlessRecyclerViewScrollListener?.state
 
-        val linearLayoutManager = LinearLayoutManager(activity)
+        val linearLayoutManager = GridLayoutManager(activity, 2)
         endlessRecyclerViewScrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 loadData(page)
             }
         }
+        addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        endlessRecyclerViewScrollListener?.state = oldState
 
-        endlessRecyclerViewScrollListener?.setState(oldState)
-
-        layoutManager = GridLayoutManager(context, 2)
+        layoutManager = linearLayoutManager
         adapter = listTvShowAdapter
         addOnScrollListener(endlessRecyclerViewScrollListener)
     }

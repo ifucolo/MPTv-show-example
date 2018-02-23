@@ -4,6 +4,7 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.view.ViewCompat
 import android.widget.ImageView
 import com.example.com.mptvshow.R
 
@@ -14,11 +15,9 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     fragmentTransaction.commit()
 }
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 inline fun FragmentManager.inTransactionImage(func: FragmentTransaction.() -> Unit, imageView: ImageView) {
     val fragmentTransaction = beginTransaction()
-    fragmentTransaction.setReorderingAllowed(true)
-    fragmentTransaction.addSharedElement(imageView, imageView.transitionName)
+    fragmentTransaction.addSharedElement(imageView, ViewCompat.getTransitionName(imageView))
     fragmentTransaction.func()
     fragmentTransaction.commit()
 }
