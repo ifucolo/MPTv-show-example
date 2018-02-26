@@ -1,9 +1,9 @@
-package com.example.com.mptvshow.feature.list.infrastructure.mapper
+package com.example.com.mptvshow.feature.shared.infrastructure.mapper
 
-import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
-import com.example.com.mptvshow.feature.list.infrastructure.model.ListTvShowPayload
+import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
+import com.example.com.mptvshow.feature.shared.infrastructure.model.ListTvShowPayload
 
-object ListTvShowMapper {
+object BaseListTvShowMapper {
 
     fun map(listTvShowPayload: ListTvShowPayload) = ArrayList<TvShowItem>().apply {
         listTvShowPayload.results.forEach { itemPayload ->

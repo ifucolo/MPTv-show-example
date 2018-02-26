@@ -1,4 +1,4 @@
-package com.example.com.mptvshow.feature.list.domain.entities
+package com.example.com.mptvshow.feature.shared.domain.entities
 
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package com.example.com.mptvshow.feature.list.ui.delegate
+package com.example.com.mptvshow.feature.shared.ui.delegate
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
@@ -9,8 +9,8 @@ import butterknife.ButterKnife
 import com.bumptech.glide.Glide
 import com.example.com.mptvshow.R
 import com.example.com.mptvshow.extensions.inflate
-import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
-import com.example.com.mptvshow.feature.list.ui.ListTvShowAdapter
+import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
+import com.example.com.mptvshow.feature.shared.ui.ListTvShowAdapter
 import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate
 
 class TvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.ListGenericListener): AbsListItemAdapterDelegate<TvShowItem, Any, TvShowDelegate.ViewHolder>() {
@@ -51,7 +51,7 @@ class TvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.List
 
 
 
-        viewHolder.imgCover.transitionName = "iago"
+        viewHolder.imgCover.transitionName = item.id
         viewHolder.itemView.setOnClickListener {
             listGenericListener.onCLickTvShow(item, viewHolder.imgCover)
         }

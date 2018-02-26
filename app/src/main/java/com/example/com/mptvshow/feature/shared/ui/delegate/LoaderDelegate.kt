@@ -1,10 +1,10 @@
-package com.example.com.mptvshow.feature.list.ui.delegate
+package com.example.com.mptvshow.feature.shared.ui.delegate
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.example.com.mptvshow.R
 import com.example.com.mptvshow.extensions.inflate
-import com.example.com.mptvshow.feature.list.domain.entities.Loader
+import com.example.com.mptvshow.feature.shared.domain.entities.Loader
 
 import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate
 

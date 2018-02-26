@@ -1,6 +1,6 @@
 package com.example.com.mptvshow.di
 
-import com.example.com.mptvshow.feature.list.infrastructure.model.ListTvShowPayload
+import com.example.com.mptvshow.feature.shared.infrastructure.model.ListTvShowPayload
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

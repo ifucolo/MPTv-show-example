@@ -1,4 +1,4 @@
-package com.example.com.mptvshow.feature.list.infrastructure.model
+package com.example.com.mptvshow.feature.shared.infrastructure.model
 
 import com.google.gson.annotations.SerializedName
 

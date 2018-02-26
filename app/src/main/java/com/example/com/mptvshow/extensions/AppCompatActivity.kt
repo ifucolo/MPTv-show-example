@@ -4,6 +4,7 @@ import android.support.annotation.IdRes
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.transition.TransitionInflater
 import android.widget.ImageView
 import com.example.com.mptvshow.R
 
@@ -24,14 +25,26 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, tag: String) {
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun AppCompatActivity.replaceFragmentTransition(fragment: Fragment, imageView: ImageView, tag: String) {
-    supportFragmentManager.inTransactionImage({
-        if (findFragmentByTag(tag) != fragment)
-            addToBackStack(tag)
+    supportFragmentManager.inTransactionImage{
+        //if (findFragmentByTag(tag) != fragment)
 
-        replace(R.id.container, fragment)
-    }, imageView)
+        val transitionInflater = TransitionInflater.from(this@replaceFragmentTransition)
+
+        val changeTransform = transitionInflater.inflateTransition(R.transition.change_image_transform)
+        val fadeTransform = transitionInflater.inflateTransition(android.R.transition.fade)
+
+        fragment.sharedElementEnterTransition = changeTransform
+        fragment.enterTransition = fadeTransform
+
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        replace(R.id.container, fragment).addToBackStack(null)
+
+        fragmentTransaction.addSharedElement(imageView, imageView.transitionName)
+
+        replace(R.id.container, fragment).addToBackStack(tag)
+
+    }
 }
-
 
 fun AppCompatActivity.popFragment(): Boolean {
      val fragmentManager = fragmentManager

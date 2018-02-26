@@ -1,4 +1,4 @@
-package com.example.com.mptvshow.feature.detail.ui
+package com.example.com.mptvshow.feature.detail
 
 import android.os.Build
 import android.os.Bundle
@@ -7,29 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.example.com.mptvshow.R
-import com.example.com.mptvshow.feature.BaseFragment
-import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
+import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.Glide
+import com.example.com.mptvshow.feature.shared.fragment.BaseListFragment
 
-class TvShowDetailFragment: BaseFragment() {
-
+class TvShowDetailFragment: BaseListFragment() {
 
     @BindView(R.id.imgHero)
     lateinit var imgHero: ImageView
 
-    var tvShowItem: TvShowItem? = null
-    var url = ""
+    @BindView(R.id.txtDescription)
+    lateinit var txtDescription: TextView
+
+    private var tvShowItem: TvShowItem? = null
+
     companion object {
 
         var EXTRA_TRANSACTION_NAME = "transaction_name"
         var EXTRA_TV_SHOW = "tv_show"
 
-        fun newInstance(tvShowItem: TvShowItem, transactionName: String): TvShowDetailFragment{
+        fun newInstance(tvShowItem: TvShowItem, transactionName: String): TvShowDetailFragment {
             val bundle = Bundle()
             bundle.putSerializable(EXTRA_TV_SHOW, tvShowItem)
             bundle.putString(EXTRA_TRANSACTION_NAME, transactionName)
@@ -40,7 +42,7 @@ class TvShowDetailFragment: BaseFragment() {
             return fragment
         }
 
-        fun newInstance(tvShowItem: TvShowItem): TvShowDetailFragment{
+        fun newInstance(tvShowItem: TvShowItem): TvShowDetailFragment {
             val bundle = Bundle()
             bundle.putSerializable(EXTRA_TV_SHOW, tvShowItem)
 
@@ -51,26 +53,28 @@ class TvShowDetailFragment: BaseFragment() {
         }
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        url = context?.getString(R.string.base_url_images, tvShowItem?.posterImage)?: ""
-
-        postponeEnterTransition()
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move);
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_tv_show_detail, container, false)
 
-        ButterKnife.bind(this, view)
+        initView(view)
+        setData()
+
+        return view
+    }
+
+    private fun setData() {
+        postponeEnterTransition()
 
         tvShowItem = arguments?.getSerializable(EXTRA_TV_SHOW) as TvShowItem
+        txtDescription.text = tvShowItem?.overview
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            imgHero.transitionName = tvShowItem?.id
+        }
 
         Glide.with(this)
-                .load(url)
+                .load(context?.getString(R.string.base_url_images, tvShowItem?.posterImage)?: "")
                 .centerCrop()
                 .dontAnimate()
                 .listener(object : RequestListener<String, GlideDrawable> {
@@ -85,19 +89,9 @@ class TvShowDetailFragment: BaseFragment() {
                     }
                 })
                 .into(imgHero)
-
-        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
-
-    private fun setUpTransition() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        }
+    override fun loadData(page: Int) {
+        presenter.fetchSimilarTvShows(tvShowItem?.id?: "", context?.getString(R.string.api_token)?: "", page)
     }
 }

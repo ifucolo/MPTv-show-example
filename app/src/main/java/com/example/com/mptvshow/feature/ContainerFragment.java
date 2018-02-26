@@ -15,7 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.com.mptvshow.R;
-import com.example.com.mptvshow.feature.list.ui.ListTvShowsFragment;
+import com.example.com.mptvshow.feature.list.ListTvShowsFragment;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import com.example.com.mptvshow.R
 import com.example.com.mptvshow.extensions.addFragment
 import com.example.com.mptvshow.extensions.replaceFragment
 import com.example.com.mptvshow.extensions.replaceFragmentTransition
-import com.example.com.mptvshow.feature.list.ui.ListTvShowsFragment
+import com.example.com.mptvshow.feature.list.ListTvShowsFragment
 
 class MainActivity : AppCompatActivity(), MainListener {
 
@@ -29,7 +29,19 @@ class MainActivity : AppCompatActivity(), MainListener {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun openFragmentTransaction(fragment: Fragment, tag: String, imageView: ImageView) {
-         replaceFragmentTransition(fragment, imageView, tag)
+//        val containerFragment =  findFragmentByTag(tag) as ContainerFragment
+//
+//        val listViews = ArrayList<View>().apply {
+//            add(imageView)
+//        }
+//        containerFragment.openFragmentTransform(fragment, null, listViews)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+        }
+        replaceFragmentTransition(fragment, imageView, tag)
     }
+
+
 
 }

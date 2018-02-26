@@ -15,9 +15,8 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     fragmentTransaction.commit()
 }
 
-inline fun FragmentManager.inTransactionImage(func: FragmentTransaction.() -> Unit, imageView: ImageView) {
+inline fun FragmentManager.inTransactionImage(func: FragmentTransaction.() -> Unit) {
     val fragmentTransaction = beginTransaction()
-    fragmentTransaction.addSharedElement(imageView, ViewCompat.getTransitionName(imageView))
     fragmentTransaction.func()
     fragmentTransaction.commit()
 }

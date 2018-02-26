@@ -1,17 +1,15 @@
 package com.example.com.mptvshow.di
 
-import com.example.com.mptvshow.feature.list.domain.ListTvShowSource
-import com.example.com.mptvshow.feature.list.infrastructure.ListTvShowInfrastructure
+import com.example.com.mptvshow.feature.shared.domain.BaseListTvShowSource
+import com.example.com.mptvshow.feature.shared.infrastructure.BaseListTvShowInfrastructure
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
-import javax.sql.DataSource
 
 
 @Module
 class RepositoryModule {
 
     @Provides
-    fun providesListTvShowSource(listTvShowInfrastructure: ListTvShowInfrastructure): ListTvShowSource = listTvShowInfrastructure
+    fun providesListTvShowSource(baseListTvShowInfrastructure: BaseListTvShowInfrastructure): BaseListTvShowSource = baseListTvShowInfrastructure
 
 }

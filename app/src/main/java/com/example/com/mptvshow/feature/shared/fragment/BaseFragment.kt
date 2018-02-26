@@ -1,13 +1,7 @@
-package com.example.com.mptvshow.feature
+package com.example.com.mptvshow.feature.shared.fragment
 
 import android.content.Context
-import android.os.Build
 import android.support.v4.app.Fragment
-import android.support.v4.view.ViewCompat
-import android.widget.ImageView
-import com.example.com.mptvshow.feature.detail.ui.TvShowDetailFragment
-import com.example.com.mptvshow.feature.list.domain.entities.TvShowItem
-import com.example.com.mptvshow.feature.list.ui.ListTvShowAdapter
 import com.example.com.mptvshow.feature.main.MainListener
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
@@ -15,7 +9,7 @@ import io.reactivex.disposables.Disposable
 
 import java.util.ArrayList
 
-open class BaseFragment: Fragment(), ListTvShowAdapter.ListGenericListener {
+open class BaseFragment: Fragment() {
 
     private var mCallList: ArrayList<Call<*>>? = null
     private var disposables: CompositeDisposable? = null
@@ -71,13 +65,5 @@ open class BaseFragment: Fragment(), ListTvShowAdapter.ListGenericListener {
         disposables = null
 
         super.onDestroyView()
-    }
-
-    override fun onCLickTvShow(tvShowItem: TvShowItem, imgCover: ImageView) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            mainListener?.openFragmentTransaction(TvShowDetailFragment.newInstance(tvShowItem, ViewCompat.getTransitionName(imgCover)), "", imgCover)
-        else
-            mainListener?.openFragment(TvShowDetailFragment.newInstance(tvShowItem), "")
-
     }
 }
