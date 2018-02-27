@@ -11,15 +11,15 @@ import butterknife.ButterKnife
 import com.bumptech.glide.Glide
 import com.example.com.mptvshow.R
 import com.example.com.mptvshow.extensions.inflate
-import com.example.com.mptvshow.feature.shared.domain.entities.ListTvShowItem
+import com.example.com.mptvshow.feature.shared.domain.entities.DetailTvShowItem
 import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
 import com.example.com.mptvshow.feature.shared.ui.ListTvShowAdapter
 import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate
 
-class TvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.ListGenericListener): AbsListItemAdapterDelegate<ListTvShowItem, Any, TvShowDelegate.ViewHolder>() {
+class DetailTvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.ListGenericListener): AbsListItemAdapterDelegate<DetailTvShowItem, Any, DetailTvShowDelegate.ViewHolder>() {
 
 
-    inner class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.item_delegate_tv_show)) {
+    inner class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.item_delegate_tv_show_detail)) {
 
         @BindView(R.id.imgCover)
         lateinit var imgCover: ImageView
@@ -38,13 +38,13 @@ class TvShowDelegate constructor(val listGenericListener: ListTvShowAdapter.List
     override fun onCreateViewHolder(parent: ViewGroup) = ViewHolder(parent)
 
     override fun isForViewType(item: Any,items: List<Any>, position: Int): Boolean {
-        return item is ListTvShowItem
+        return item is DetailTvShowItem
     }
 
-    override fun onBindViewHolder(item: ListTvShowItem, viewHolder: TvShowDelegate.ViewHolder, payloads: MutableList<Any>) {
+    override fun onBindViewHolder(item: DetailTvShowItem, viewHolder: DetailTvShowDelegate.ViewHolder, payloads: MutableList<Any>) {
         val context =  viewHolder.imgCover.context
 
-
+        
         Glide.with(context)
                 .load(context.getString(R.string.base_url_images, item.posterImage))
                 .error(R.drawable.img_place_holder)

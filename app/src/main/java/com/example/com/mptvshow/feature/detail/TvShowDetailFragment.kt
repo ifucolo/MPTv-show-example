@@ -2,6 +2,8 @@ package com.example.com.mptvshow.feature.detail
 
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.CollapsingToolbarLayout
+import android.support.v7.widget.Toolbar
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,7 @@ import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.Glide
+import com.example.com.mptvshow.feature.main.MainActivity
 import com.example.com.mptvshow.feature.shared.fragment.BaseListFragment
 
 class TvShowDetailFragment: BaseListFragment() {
@@ -21,8 +24,18 @@ class TvShowDetailFragment: BaseListFragment() {
     @BindView(R.id.imgHero)
     lateinit var imgHero: ImageView
 
+    @BindView(R.id.txtAverage)
+    lateinit var txtAverage: TextView
+
     @BindView(R.id.txtDescription)
     lateinit var txtDescription: TextView
+
+    @BindView(R.id.toolbar)
+    lateinit var toolbar: Toolbar
+
+    @BindView(R.id.collapsingToolbar)
+    lateinit var collapsingToolbar: CollapsingToolbarLayout
+
 
     private var tvShowItem: TvShowItem? = null
 
@@ -56,22 +69,29 @@ class TvShowDetailFragment: BaseListFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_tv_show_detail, container, false)
 
-        initView(view)
+        initView(view, true)
         setData()
 
         return view
     }
 
     private fun setData() {
-        postponeEnterTransition()
-
-        tvShowItem = arguments?.getSerializable(EXTRA_TV_SHOW) as TvShowItem
-        txtDescription.text = tvShowItem?.overview
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-            imgHero.transitionName = tvShowItem?.id
+            imgHero.transitionName = arguments?.getString(EXTRA_TRANSACTION_NAME)
         }
+
+        tvShowItem = arguments?.getSerializable(EXTRA_TV_SHOW) as TvShowItem
+
+        (activity as MainActivity).setSupportActionBar(toolbar)
+        toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_back)
+        toolbar.setNavigationOnClickListener({ (activity as MainActivity).onBackPressed() })
+
+        txtAverage.text = tvShowItem?.voteAverage.toString()
+
+        collapsingToolbar.title = tvShowItem?.title
+        txtDescription.text = tvShowItem?.overview
 
         Glide.with(this)
                 .load(context?.getString(R.string.base_url_images, tvShowItem?.posterImage)?: "")
@@ -92,6 +112,6 @@ class TvShowDetailFragment: BaseListFragment() {
     }
 
     override fun loadData(page: Int) {
-        presenter.fetchSimilarTvShows(tvShowItem?.id?: "", context?.getString(R.string.api_token)?: "", page)
+        presenter.fetchSimilarTvShows(tvShowItem?.id?:0, context?.getString(R.string.api_token)?: "", page)
     }
 }

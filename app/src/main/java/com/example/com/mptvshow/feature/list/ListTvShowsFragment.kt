@@ -18,9 +18,9 @@ class ListTvShowsFragment: BaseListFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_list_tv_show_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_tv_show, container, false)
 
-        initView(view)
+        initView(view, false)
 
         return  view
     }

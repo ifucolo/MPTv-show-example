@@ -10,13 +10,13 @@ import javax.inject.Inject
 class BaseListTvShowInfrastructure @Inject constructor(val serverApi: ServerApi): BaseListTvShowSource {
 
 
-    override fun fetchMostPopularTvShow(apiKey: String, page: Int): Single<ArrayList<TvShowItem>> {
+    override fun fetchMostPopularTvShow(apiKey: String, page: Int): Single<ArrayList<Any>> {
         return serverApi.getMostPopular(apiKey, page)
-                .map { BaseListTvShowMapper.map(it) }
+                .map { BaseListTvShowMapper.mapForList(it) }
     }
 
-    override fun fetchSimilarTvShows(id: String, apiKey: String, page: Int): Single<ArrayList<TvShowItem>> {
+    override fun fetchSimilarTvShows(id: Int, apiKey: String, page: Int): Single<ArrayList<Any>> {
         return serverApi.getSimilarTvShows(id, apiKey, page)
-                .map { BaseListTvShowMapper.map(it) }
+                .map { BaseListTvShowMapper.mapForDetail(it) }
     }
 }

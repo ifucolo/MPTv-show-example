@@ -4,7 +4,11 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.transition.Fade
+import android.support.transition.TransitionSet
+import android.support.transition.TransitionSet.ORDERING_TOGETHER
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.widget.ImageView
 import com.example.com.mptvshow.R
 import com.example.com.mptvshow.extensions.addFragment
@@ -29,19 +33,8 @@ class MainActivity : AppCompatActivity(), MainListener {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun openFragmentTransaction(fragment: Fragment, tag: String, imageView: ImageView) {
-//        val containerFragment =  findFragmentByTag(tag) as ContainerFragment
-//
-//        val listViews = ArrayList<View>().apply {
-//            add(imageView)
-//        }
-//        containerFragment.openFragmentTransform(fragment, null, listViews)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-        }
         replaceFragmentTransition(fragment, imageView, tag)
     }
-
 
 
 }

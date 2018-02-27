@@ -1,10 +1,9 @@
 package com.example.com.mptvshow.feature.shared.presentation
 
-import com.example.com.mptvshow.feature.shared.domain.entities.TvShowItem
 
 interface BaseListShowTvView {
 
-    fun showResult(result: ArrayList<TvShowItem>)
+    fun showResult(result: ArrayList<Any>)
     fun showError(throwable: Throwable)
 
 }

@@ -19,7 +19,7 @@ class BaseListShowTvPresenter @Inject constructor(private val baseListTvShowSour
                 )
     }
 
-    fun fetchSimilarTvShows(tvId: String, apiKey: String, page: Int) {
+    fun fetchSimilarTvShows(tvId: Int, apiKey: String, page: Int) {
         disposables += baseListTvShowSource.fetchSimilarTvShows(tvId, apiKey, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

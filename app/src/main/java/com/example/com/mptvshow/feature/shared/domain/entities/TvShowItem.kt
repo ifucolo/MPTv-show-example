@@ -2,9 +2,9 @@ package com.example.com.mptvshow.feature.shared.domain.entities
 
 import java.io.Serializable
 
-class TvShowItem: Serializable {
+open class TvShowItem: Serializable {
 
-    var id: String = ""
+    var id: Int = 0
     var title: String = ""
     var voteAverage: Float = 0.0f
     var posterImage: String = ""

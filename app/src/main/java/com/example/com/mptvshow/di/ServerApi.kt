@@ -11,8 +11,8 @@ interface ServerApi {
     @GET("tv/popular?language=en-US")
     fun getMostPopular(@Query("api_key") apikey: String, @Query("page") page: Int): Single<ListTvShowPayload>
 
-    @GET("tv/{tv_id}/similar")
-    fun getSimilarTvShows(@Path("tv_id") tvId: String, @Query("api_key") apikey: String, @Query("page") page: Int): Single<ListTvShowPayload>
+    @GET("tv/{tv_id}/similar?language=en-US")
+    fun getSimilarTvShows(@Path("tv_id") tvId: Int, @Query("api_key") apikey: String, @Query("page") page: Int): Single<ListTvShowPayload>
 
 
 }

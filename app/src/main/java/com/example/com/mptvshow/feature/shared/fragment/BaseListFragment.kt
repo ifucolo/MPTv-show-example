@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -48,7 +49,6 @@ abstract class BaseListFragment: BaseFragment(), BaseListShowTvView, ListTvShowA
         items.clear()
         listTvShowAdapter = ListTvShowAdapter(items, this)
 
-        insertLoader()
     }
 
     override fun onDestroy() {
@@ -57,20 +57,28 @@ abstract class BaseListFragment: BaseFragment(), BaseListShowTvView, ListTvShowA
     }
 
 
-    protected fun initView(view: View) {
+    protected fun initView(view: View, isDetail: Boolean) {
+
         ButterKnife.bind(this, view)
         MPTvShowApplication().get().getCoreComponent().inject(this)
+
         presenter.bind(this)
 
-        setupRecycler()
+        insertLoader()
+        setupRecycler(isDetail)
     }
 
     abstract fun loadData(page: Int)
 
-    private fun setupRecycler() = with(recyclerView) {
+    private fun setupRecycler(isDetail: Boolean) = with(recyclerView) {
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false)
         val oldState = endlessRecyclerViewScrollListener?.state
 
-        val linearLayoutManager = LinearLayoutManager(activity)
+        val linearLayoutManager =
+                if (isDetail)
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                else
+                    GridLayoutManager(context, 2)
 
         endlessRecyclerViewScrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
@@ -78,6 +86,8 @@ abstract class BaseListFragment: BaseFragment(), BaseListShowTvView, ListTvShowA
             }
         }
         addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+
         endlessRecyclerViewScrollListener?.state = oldState
 
         layoutManager = linearLayoutManager
@@ -124,7 +134,7 @@ abstract class BaseListFragment: BaseFragment(), BaseListShowTvView, ListTvShowA
 
     }
 
-    override fun showResult(result: ArrayList<TvShowItem>) {
+    override fun showResult(result: ArrayList<Any>) {
         removeLoader()
 
         if(result.isEmpty())

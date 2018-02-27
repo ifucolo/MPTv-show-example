@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class TvShowItemPayload {
 
     @SerializedName("id")
-    var id: String = ""
+    var id: Int = 0
 
     @SerializedName("name")
     var title: String = ""

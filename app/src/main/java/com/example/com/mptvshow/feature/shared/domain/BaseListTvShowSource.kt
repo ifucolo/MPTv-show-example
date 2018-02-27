@@ -5,7 +5,7 @@ import io.reactivex.Single
 
 interface BaseListTvShowSource {
 
-    fun fetchMostPopularTvShow(apiKey: String, page: Int): Single<ArrayList<TvShowItem>>
-    fun fetchSimilarTvShows(id: String, apiKey: String, page: Int): Single<ArrayList<TvShowItem>>
+    fun fetchMostPopularTvShow(apiKey: String, page: Int): Single<ArrayList<Any>>
+    fun fetchSimilarTvShows(id: Int, apiKey: String, page: Int): Single<ArrayList<Any>>
 
 }
