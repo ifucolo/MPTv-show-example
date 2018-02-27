@@ -1,5 +1,8 @@
 package com.example.com.mptvshow.feature.main
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +20,13 @@ import com.example.com.mptvshow.extensions.replaceFragmentTransition
 import com.example.com.mptvshow.feature.list.ListTvShowsFragment
 
 class MainActivity : AppCompatActivity(), MainListener {
+
+    companion object {
+
+        fun launchIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

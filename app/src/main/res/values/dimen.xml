@@ -8,6 +8,8 @@
     <dimen name="margin_view">16dp</dimen>
     <dimen name="margin_small">5dp</dimen>
     <dimen name="title_size">16sp</dimen>
+    <dimen name="big_title">25dp</dimen>
+
     <dimen name="subtitle_size">12sp</dimen>
 
     <dimen name="detail_backdrop_height">256dp</dimen>
