@@ -85,8 +85,9 @@ abstract class BaseListFragment: BaseFragment(), BaseListShowTvView, ListTvShowA
                 loadData(page)
             }
         }
+
         addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+        if (!isDetail) addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
 
         endlessRecyclerViewScrollListener?.state = oldState
 

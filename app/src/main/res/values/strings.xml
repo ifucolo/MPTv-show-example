@@ -5,7 +5,7 @@
     <string name="api_token">aedd1034b62c7075e18d333d4579493e</string>
     <string name="base_url_images">http://image.tmdb.org/t/p/w185%1$s</string>
 
-    <string name="similar_movies">Similar movies</string>
+    <string name="similar_movies">Similar TvShows</string>
     <string name="try_again">Try again</string>
     <string name="overview">Overview</string>
     <string name="welcome">Welcome</string>
