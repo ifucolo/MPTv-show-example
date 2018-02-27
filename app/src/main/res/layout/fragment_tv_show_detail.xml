@@ -55,7 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="@dimen/margin_view"
+                android:paddingLeft="@dimen/margin_view"
+                android:paddingRight="@dimen/margin_view"
+                android:paddingTop="@dimen/margin_view"
                 android:orientation="horizontal">
 
                 <TextView
