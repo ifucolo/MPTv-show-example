@@ -10,4 +10,5 @@ apk download: https://github.com/ifucolo/MPTv-show-example/blob/master/app/relea
 ## TODO List
 - [ ] Dagger 2.11 or higher, right way.
 - [ ] Clean Architecture right way.
+- [ ] Courontines
 - [ ] Tests.
