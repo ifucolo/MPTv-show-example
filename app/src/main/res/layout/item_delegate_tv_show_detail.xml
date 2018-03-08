@@ -48,12 +48,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginRight="@dimen/margin_small"
-                    android:src="@drawable/ic_star"/>
-
                 <TextView
                     android:id="@+id/txtSubTitle"
                     android:layout_width="wrap_content"

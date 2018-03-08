@@ -68,11 +68,6 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_star"/>
-
                 <TextView
                     android:id="@+id/txtAverage"
                     android:layout_width="match_parent"

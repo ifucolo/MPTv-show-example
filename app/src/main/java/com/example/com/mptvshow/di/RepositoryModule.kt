@@ -1,7 +1,9 @@
 package com.example.com.mptvshow.di
 
-import com.example.com.mptvshow.feature.shared.domain.BaseListTvShowSource
-import com.example.com.mptvshow.feature.shared.infrastructure.BaseListTvShowInfrastructure
+import com.example.com.mptvshow.feature.detail.domain.TvShowDetailSource
+import com.example.com.mptvshow.feature.detail.infrastructure.TvShowDetailInfrastructure
+import com.example.com.mptvshow.feature.home.domain.ListTvSource
+import com.example.com.mptvshow.feature.home.infrastructure.ListTvInfrastructure
 import dagger.Module
 import dagger.Provides
 
@@ -10,6 +12,9 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun providesListTvShowSource(baseListTvShowInfrastructure: BaseListTvShowInfrastructure): BaseListTvShowSource = baseListTvShowInfrastructure
+    fun providesListTvShowSource(listTvInfrastructure: ListTvInfrastructure): ListTvSource = listTvInfrastructure
+
+    @Provides
+    fun providesTvShowDetailSource(tvShowDetailInfrastructure: TvShowDetailInfrastructure): TvShowDetailSource = tvShowDetailInfrastructure
 
 }
