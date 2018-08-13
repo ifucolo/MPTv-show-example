@@ -29,30 +29,10 @@ import com.example.com.mptvshow.feature.main.MainActivity
 import com.example.com.mptvshow.feature.shared.domain.entities.Loader
 import com.example.com.mptvshow.feature.shared.base.BaseFragment
 import com.example.com.mptvshow.widget.EndlessRecyclerViewScrollListener
+import kotlinx.android.synthetic.main.fragment_tv_show_detail.*
 import javax.inject.Inject
 
 class TvShowDetailFragment: BaseFragment(), TvShowDetailView, TvShowDetailAdapter.TvShowDetailAdapterListener {
-
-    @BindView(R.id.imgHero)
-    lateinit var imgHero: ImageView
-
-    @BindView(R.id.txtAverage)
-    lateinit var txtAverage: TextView
-
-    @BindView(R.id.txtDescription)
-    lateinit var txtDescription: TextView
-
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
-
-    @BindView(R.id.collapsingToolbar)
-    lateinit var collapsingToolbar: CollapsingToolbarLayout
-
-    @BindView(R.id.recyclerView)
-    lateinit var recyclerView: RecyclerView
-
-    @BindView(R.id.message)
-    lateinit var message: TextView
 
     @Inject
     lateinit var presenter: TvShowDetailPresenter
@@ -172,8 +152,6 @@ class TvShowDetailFragment: BaseFragment(), TvShowDetailView, TvShowDetailAdapte
 
     private fun setupRecycler() = with(recyclerView) {
         ViewCompat.setNestedScrollingEnabled(recyclerView, false)
-        val oldState = endlessRecyclerViewScrollListener?.state
-
         val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         endlessRecyclerViewScrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
@@ -184,7 +162,6 @@ class TvShowDetailFragment: BaseFragment(), TvShowDetailView, TvShowDetailAdapte
 
         addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        endlessRecyclerViewScrollListener?.state = oldState
 
         layoutManager = linearLayoutManager
         adapter = this@TvShowDetailFragment.adapter
@@ -201,7 +178,7 @@ class TvShowDetailFragment: BaseFragment(), TvShowDetailView, TvShowDetailAdapte
         insertLoader()
         adapter.notifyDataSetChanged()
 
-        message.hide()
+        txtMessage.hide()
         recyclerView.show()
 
         endlessRecyclerViewScrollListener?.resetState()
@@ -223,7 +200,7 @@ class TvShowDetailFragment: BaseFragment(), TvShowDetailView, TvShowDetailAdapte
     }
 
     override fun showError(throwable: Throwable) {
-        message.show()
+        txtMessage.show()
         recyclerView.hide()
     }
 

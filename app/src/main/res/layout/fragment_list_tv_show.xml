@@ -23,7 +23,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/txtMessage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/try_again"
