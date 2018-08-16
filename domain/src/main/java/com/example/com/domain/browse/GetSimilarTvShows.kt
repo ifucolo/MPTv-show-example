@@ -12,7 +12,7 @@ open class GetSimilarTvShows @Inject constructor(
         postExecutionThread: PostExecutionThread)
     : ObservableUseCase<List<TvShow>, GetSimilarTvShows.Params>(postExecutionThread) {
 
-    override fun buildUseCaseObservable(params: Params?): Observable<List<TvShow>> {
+    public override fun buildUseCaseObservable(params: Params?): Observable<List<TvShow>> {
         if (params == null)
             throw IllegalArgumentException("Params cant be null")
 
