@@ -1,7 +1,7 @@
 package com.example.com.data.mapper
 
 import com.example.com.data.factory.TvShowFactory
-import com.example.com.data.model.TvShowEntitty
+import com.example.com.data.model.TvShowEntity
 import com.example.com.domain.model.TvShow
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,7 +31,7 @@ class TvShowMapperTest {
     }
 
 
-    private fun assertEqualData(entity: TvShowEntitty, model: TvShow) {
+    private fun assertEqualData(entity: TvShowEntity, model: TvShow) {
         assertEquals(entity.id, model.id)
         assertEquals(entity.overview, model.overview)
         assertEquals(entity.posterImage, model.posterImage)

@@ -1,6 +1,6 @@
 package com.example.com.data.model
 
-data class TvShowEntitty(
+data class TvShowEntity(
         val id: Int,
         val title: String,
         val voteAverage: Float,
